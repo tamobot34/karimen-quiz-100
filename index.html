@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>仮免一夜漬け ○×100問</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>🚗 仮免一夜漬け ○×100問</h1>
+      <p>テンポよく解いて、弱点だけ復習できるで。</p>
+    </header>
+
+    <section id="topBar" class="card">
+      <div class="meta">
+        <span id="qCount">1 / 100</span>
+        <span id="catBadge" class="badge">-</span>
+      </div>
+      <div class="progressWrap"><div id="progress" class="progress"></div></div>
+      <div id="score">正解: 0 / 0</div>
+    </section>
+
+    <section class="card">
+      <h2 id="question">読み込み中...</h2>
+      <div class="actions">
+        <button id="btnTrue" class="btn true">○（正しい）</button>
+        <button id="btnFalse" class="btn false">×（誤り）</button>
+      </div>
+      <p id="result" class="result"></p>
+      <p id="explanation" class="explanation"></p>
+      <button id="nextBtn" class="btn next" hidden>次の問題へ</button>
+    </section>
+
+    <section id="end" class="card" hidden>
+      <h3>おつかれさん！</h3>
+      <p id="finalScore"></p>
+      <div class="actions">
+        <button id="retryAll" class="btn next">もう一回100問</button>
+        <button id="retryWeak" class="btn false">不正解だけ復習</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
