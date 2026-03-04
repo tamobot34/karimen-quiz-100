@@ -102,6 +102,13 @@ const quizData = [
   { q: "この標識がある道路で右に横断してはいけない。（図問題）", a: "x", e: "図は右折禁止。横断そのものを禁止する標識ではありません。" }
 ];
 
+function shuffleQuestions() {
+  for (let i = quizData.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [quizData[i], quizData[j]] = [quizData[j], quizData[i]];
+  }
+}
+
 let current = 0;
 let score = 0;
 let answered = false;
@@ -178,10 +185,12 @@ function showResult() {
   document.getElementById("retry").addEventListener("click", () => {
     current = 0;
     score = 0;
+    shuffleQuestions();
     resultEl.classList.add("hidden");
     document.getElementById("quiz-card").classList.remove("hidden");
     renderQuestion();
   });
 }
 
+shuffleQuestions();
 renderQuestion();
