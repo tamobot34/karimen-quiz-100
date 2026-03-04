@@ -120,28 +120,6 @@ const feedbackEl = document.getElementById("feedback");
 const nextBtn = document.getElementById("next");
 const resultEl = document.getElementById("result");
 const answerButtons = [...document.querySelectorAll("#answer-buttons .btn")];
-const themeToggleBtn = document.getElementById("theme-toggle");
-
-function applyTheme(theme) {
-  const isDark = theme === "dark";
-  document.body.classList.toggle("dark", isDark);
-  if (themeToggleBtn) {
-    themeToggleBtn.textContent = isDark ? "☀️ ライトモード" : "🌙 ダークモード";
-  }
-}
-
-function initTheme() {
-  const saved = localStorage.getItem("quiz-theme");
-  applyTheme(saved === "dark" ? "dark" : "light");
-
-  if (!themeToggleBtn) return;
-
-  themeToggleBtn.addEventListener("click", () => {
-    const next = document.body.classList.contains("dark") ? "light" : "dark";
-    localStorage.setItem("quiz-theme", next);
-    applyTheme(next);
-  });
-}
 
 function renderQuestion() {
   answered = false;
@@ -214,6 +192,5 @@ function showResult() {
   });
 }
 
-initTheme();
 shuffleQuestions();
 renderQuestion();
