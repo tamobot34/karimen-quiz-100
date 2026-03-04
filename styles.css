@@ -1,4 +1,5 @@
 :root {
+  --bg-top: #eef2ff;
   --bg: #f3f6ff;
   --card: #ffffff;
   --text: #1b2240;
@@ -7,9 +8,17 @@
   --ng: #d93025;
   --accent: #325dff;
   --surface: #edf1ff;
+  --true-bg: #e8f6ee;
+  --true-text: #0a7d44;
+  --false-bg: #ffebeb;
+  --false-text: #b42318;
+  --ok-bg: #e8f6ee;
+  --ng-bg: #ffebeb;
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
 }
 
 body.dark {
+  --bg-top: #080d1a;
   --bg: #0b1020;
   --card: #121a2f;
   --text: #e8edff;
@@ -18,14 +27,22 @@ body.dark {
   --ng: #ff6d66;
   --accent: #7f99ff;
   --surface: #1a2547;
+  --true-bg: #173626;
+  --true-text: #8ff0be;
+  --false-bg: #3b1d24;
+  --false-text: #ffb4af;
+  --ok-bg: #173626;
+  --ng-bg: #3b1d24;
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
 * { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-  background: linear-gradient(180deg, #eef2ff, var(--bg));
+  background: linear-gradient(180deg, var(--bg-top), var(--bg));
   color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
 }
 .container {
   max-width: 860px;
@@ -54,7 +71,8 @@ header h1 { margin: 0; }
   background: var(--card);
   border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 .meta {
   display: flex;
@@ -79,8 +97,8 @@ header h1 { margin: 0; }
   font-weight: 700;
   cursor: pointer;
 }
-.btn.true { background: #e8f6ee; color: #0a7d44; }
-.btn.false { background: #ffebeb; color: #b42318; }
+.btn.true { background: var(--true-bg); color: var(--true-text); }
+.btn.false { background: var(--false-bg); color: var(--false-text); }
 .btn.ghost { background: var(--surface); color: var(--accent); width: 100%; margin-top: 12px; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .feedback {
@@ -89,8 +107,8 @@ header h1 { margin: 0; }
   border-radius: 12px;
   line-height: 1.6;
 }
-.feedback.ok { background: #e8f6ee; border-left: 5px solid var(--ok); }
-.feedback.ng { background: #ffebeb; border-left: 5px solid var(--ng); }
+.feedback.ok { background: var(--ok-bg); border-left: 5px solid var(--ok); }
+.feedback.ng { background: var(--ng-bg); border-left: 5px solid var(--ng); }
 .nav { margin-top: 8px; }
 .hidden { display: none; }
 #result h2 { margin-top: 0; }

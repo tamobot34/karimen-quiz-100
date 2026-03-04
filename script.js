@@ -125,12 +125,16 @@ const themeToggleBtn = document.getElementById("theme-toggle");
 function applyTheme(theme) {
   const isDark = theme === "dark";
   document.body.classList.toggle("dark", isDark);
-  themeToggleBtn.textContent = isDark ? "☀️ ライトモード" : "🌙 ダークモード";
+  if (themeToggleBtn) {
+    themeToggleBtn.textContent = isDark ? "☀️ ライトモード" : "🌙 ダークモード";
+  }
 }
 
 function initTheme() {
   const saved = localStorage.getItem("quiz-theme");
   applyTheme(saved === "dark" ? "dark" : "light");
+
+  if (!themeToggleBtn) return;
 
   themeToggleBtn.addEventListener("click", () => {
     const next = document.body.classList.contains("dark") ? "light" : "dark";
